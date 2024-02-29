@@ -15,7 +15,7 @@ const AttendanceForm = ({ resetData, sortbyID, searchData }) => {
                     <Col xs="auto">
                         <Form.Control
                             type="text"
-                            placeholder="Filter"
+                            placeholder="Filter By ID"
                             className=" mr-sm-2"
                             onChange={(e) => searchData(e.target.value)}
                         />

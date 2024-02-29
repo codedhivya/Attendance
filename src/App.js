@@ -3,10 +3,10 @@ import AttendanceWrapper from './component/AttendanceWrapper.js';
 import LoginForm from './component/LoginForm.js';
 
 function App() {
-
+  //  <LoginForm />
   return (
     < div className="App">
-      <LoginForm />
+      <AttendanceWrapper />
     </div>
   );
 }

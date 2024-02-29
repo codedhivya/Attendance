@@ -16,6 +16,7 @@ function getStoredData() {
 const AttendanceWrapper = () => {
 
     const [studentsData, setStudentdata] = useState(getStoredData())
+    const [filtered, setfiltered] = useState('')
 
     useEffect(() => {
         localStorage.setItem("studentrecord", JSON.stringify(studentsData))
@@ -28,7 +29,6 @@ const AttendanceWrapper = () => {
 
     }
     function resetData() {
-        console.log("reset")
         setStudentdata(loadStudentData);
     }
 
@@ -39,9 +39,7 @@ const AttendanceWrapper = () => {
     }
     function searchData(value) {
 
-        const filteredData = studentsData.filter(item => String(item.id).toLowerCase().includes(value.toLowerCase()));
-
-        // setStudentdata(filteredData) when i do this studentData List is overridden .
+        setfiltered(value);
 
     }
     return (
@@ -59,12 +57,13 @@ const AttendanceWrapper = () => {
                             <th>Modify</th>
                         </tr>
                     </thead>
-                    {studentsData.map((data) => (<Attendance data={data} toggleAttendance={toggleAttendance} />))}
+                    {
+                        studentsData.filter(item => String(item.id).toLowerCase().includes(filtered.toLowerCase())).map((data) => (<Attendance data={data} toggleAttendance={toggleAttendance} />))
+                    }
                 </Table>
 
             </div>
         </div>
     )
 }
-
 export default AttendanceWrapper
